@@ -6,7 +6,7 @@ The most recent version can be found [on the vaxi branch](https://github.com/oce
 
 ## 📅 Covered period
 
-The tracker starts with the very first public version at the time of the release in October 2021. It may be missing one update done during November 2021, but it will automatically track all new updates done after that point.
+The tracker starts with the very first public version at the time of the release in August 2021. It may be missing some updates done between that point and November 2021, but it will automatically track all new updates done after that point.
 
 ## 📖 What's vaxi.json?
 
