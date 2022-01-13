@@ -1,0 +1,31 @@
+name: Update Vaxi JSON file
+
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: '0 */6 * * *'
+
+jobs:
+  update-vaxi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: vaxi
+      - name: Fetch Vaxi JSON file
+        uses: JamesIves/fetch-api-data-action@v2.1.0
+        with:
+          endpoint: "${{ secrets.VAXI_UPDATES_JSON_URL }}"
+          configuration: '{ "method": "GET" }'
+          save-location: './'
+          save-name: 'vaxi'
+      - name: Format Vaxi JSON file
+        uses: oceantume/json-format-action@v0.0.2
+        with:
+          file: 'vaxi.json'
+      - name: Commit Vaxi JSON file
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          ref: vaxi
+          commit_message: 'Update vaxi.json with latest version'
