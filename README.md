@@ -2,6 +2,8 @@
 
 A simple history tracker for the public JSON file used by Quebec's VaxiCode applications to verify vaccination status.
 
+The most recent version can be found [on the vaxi branch](https://github.com/oceantume/quebec-vaxicode-tracker/blob/vaxi/vaxi.json).
+
 ## Covered period
 
 The tracker starts with the very first public version at the time of the release in October 2021, but it's missing all updates between that point and January 2022. However, it should be able to track all new updates from that point onward.
