@@ -12,6 +12,8 @@ The tracker starts with the very first public version at the time of release in 
 
 The `vaxi.json` file is publicly hosted on the Web and is used by the VaxiCode applications to determine whether the data in a valid QR code is an acceptable vaccination status. For example, it indicates that having two doses of the vaccine is good (green).
 
+Code formatting is done on the file when it's retrieved to make it more readable. Additionally, the two fields `g` and `v` are auotmatically stripped out. These fields represent a date and some metadata on the applications and are not relevant here. 
+
 Parsing the file and explaining its content is beyond the scope of this project. You can try reading the file, JSON is a human-readable format even though most of the content itself is not very friendly.
 
 ## ⚖ Intention
