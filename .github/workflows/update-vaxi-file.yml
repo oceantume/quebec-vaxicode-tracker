@@ -21,9 +21,10 @@ jobs:
           save-location: './'
           save-name: 'vaxi'
       - name: Format Vaxi JSON file
-        uses: oceantume/json-format-action@v0.0.2
+        uses: oceantume/json-format-action@v0.0.3
         with:
           file: 'vaxi.json'
+          removeKeys: 'g, v' # remove these extra keys. they're irrelevant and inconsistent.
       - name: Commit Vaxi JSON file
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
