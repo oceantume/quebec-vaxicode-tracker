@@ -1,8 +1,9 @@
 {
   "qcr": {
     "name": "Quebec",
-    "version": "1.0",
-    "date": "2021-07-27",
+    "version": "1.3",
+    "versionNumber": 13,
+    "date": "2021-09-08",
     "conditions": [
       {
         "id": "second_dose",
@@ -10,27 +11,11 @@
         "cvx": [
           207,
           208,
-          210,
-          211
+          210
         ],
         "description": "Deuxième dose de vaccin bi-dose",
         "daysAgo": 7,
-        "timeGranularity": "day",
-        "doseNumber": 2
-      },
-      {
-        "id": "third_dose",
-        "type": "Immunization",
-        "cvx": [
-          207,
-          208,
-          210,
-          211
-        ],
-        "description": "Troisième dose de vaccin bi-dose",
-        "daysAgo": 7,
-        "timeGranularity": "day",
-        "doseNumber": 3
+        "timeGranularity": "day"
       },
       {
         "id": "first_dose",
@@ -38,13 +23,11 @@
         "cvx": [
           207,
           208,
-          210,
-          211
+          210
         ],
         "description": "Première dose de vaccin bi-dose",
         "daysAgo": 21,
-        "timeGranularity": "day",
-        "doseNumber": 1
+        "timeGranularity": "day"
       },
       {
         "id": "mono_dose",
@@ -72,6 +55,21 @@
         "timeGranularity": "day"
       },
       {
+        "id": "infection_pre_vax_v2",
+        "type": "DiagnosticReport",
+        "description": "Infection confirmée pré-vaccination",
+        "filters": [
+          {
+            "status": "Final",
+            "conclusion": "Positive",
+            "code.coding[0].system": "https://loinc.org",
+            "code.coding[0].code": "947598"
+          }
+        ],
+        "daysAgo": 28,
+        "timeGranularity": "day"
+      },
+      {
         "id": "recent_infection",
         "type": "DiagnosticReport",
         "description": "Infection confirmée dans les 6 derniers mois et 10 jours post-infection",
@@ -86,6 +84,42 @@
         "daysAgo": 10,
         "maxDaysAgo": 182,
         "timeGranularity": "day"
+      },
+      {
+        "id": "exemption",
+        "type": "Condition",
+        "description": "Exemption reconnue",
+        "filters": [
+          {
+            "code.coding[0].system": "http://www.santepublique.rtss.qc.ca/sipmi/fa/1.0.0/vocabulary"
+          }
+        ],
+        "exemptionCodes": [
+          "11808c55617119d924c6ca65c95d5e9de38ff324e35c00a93d43cefe15fada4c",
+          "cc547001a7804f3e945d880362c0a8f246fb9559f82fbef2961454fb518d4d29",
+          "c1cf93fb1a4683edaa42b12ddabb5459945ad1971730fabb9db9e7978c19ec6c",
+          "f7f6ee59616adea8b4b70b9cc9c5e9f6a35347144bae7b31e43a281bca4f4563"
+        ],
+        "exemptionAgents": [
+          "QCSNOMED00124",
+          "840536004"
+        ]
+      },
+      {
+        "id": "exemption_v2",
+        "type": "Condition",
+        "description": "Exemption reconnue",
+        "filters": [
+          {
+            "code.coding[0].system": "https://mc.covid19.quebec.ca/"
+          }
+        ],
+        "exemptionsInternalCodes": [
+          "MC002",
+          "MC004",
+          "MC008",
+          "MC009"
+        ]
       }
     ],
     "rules": [
@@ -97,32 +131,6 @@
           },
           {
             "id": "second_dose",
-            "delayFromPreviousEvent": 14,
-            "delayGranularity": "day"
-          }
-        ]
-      },
-      {
-        "name": "two_vaccine_doses",
-        "conditionsMatching": [
-          {
-            "id": "first_dose"
-          },
-          {
-            "id": "third_dose",
-            "delayFromPreviousEvent": 14,
-            "delayGranularity": "day"
-          }
-        ]
-      },
-      {
-        "name": "two_vaccine_doses",
-        "conditionsMatching": [
-          {
-            "id": "second_dose"
-          },
-          {
-            "id": "third_dose",
             "delayFromPreviousEvent": 14,
             "delayGranularity": "day"
           }
@@ -144,34 +152,37 @@
           },
           {
             "id": "second_dose",
-            "delayFromPreviousEvent": 21,
+            "delayFromPreviousEvent": 20,
             "delayGranularity": "day"
           }
         ]
       },
       {
-        "name": "infection_and_dose",
+        "name": "infection_and_dose_v2",
         "conditionsMatching": [
           {
-            "id": "infection_pre_vax"
+            "id": "infection_pre_vax_v2"
           },
           {
-            "id": "first_dose",
-            "delayFromPreviousEvent": 21,
+            "id": "second_dose",
+            "delayFromPreviousEvent": 20,
             "delayGranularity": "day"
           }
         ]
       },
       {
-        "name": "infection_and_dose",
+        "name": "exemption",
         "conditionsMatching": [
           {
-            "id": "infection_pre_vax"
-          },
+            "id": "exemption"
+          }
+        ]
+      },
+      {
+        "name": "exemption_v2",
+        "conditionsMatching": [
           {
-            "id": "third_dose",
-            "delayFromPreviousEvent": 21,
-            "delayGranularity": "day"
+            "id": "exemption_v2"
           }
         ]
       }
