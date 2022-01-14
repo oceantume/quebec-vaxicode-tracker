@@ -1,9 +1,9 @@
 {
   "qcr": {
     "name": "Quebec",
-    "version": "1.3",
-    "versionNumber": 13,
-    "date": "2021-09-08",
+    "version": "1.4",
+    "versionNumber": 14,
+    "date": "2021-09-17",
     "conditions": [
       {
         "id": "second_dose",
@@ -37,6 +37,45 @@
         ],
         "description": "Une dose de vaccin uni-dose",
         "daysAgo": 14,
+        "timeGranularity": "day"
+      },
+      {
+        "id": "foreign_dose",
+        "type": "Immunization",
+        "cvx": [
+          511,
+          510,
+          505,
+          504,
+          506,
+          507,
+          509,
+          501,
+          502,
+          503,
+          211,
+          500,
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1010,
+          1011,
+          1012,
+          1013,
+          1014,
+          1015,
+          1016,
+          1017,
+          9999
+        ],
+        "description": "Vaccin etranger",
+        "daysAgo": 7,
         "timeGranularity": "day"
       },
       {
@@ -118,7 +157,8 @@
           "MC002",
           "MC004",
           "MC008",
-          "MC009"
+          "MC009",
+          "ZZ999"
         ]
       }
     ],
@@ -132,6 +172,32 @@
           {
             "id": "second_dose",
             "delayFromPreviousEvent": 14,
+            "delayGranularity": "day"
+          }
+        ]
+      },
+      {
+        "name": "foreign_and_local",
+        "conditionsMatching": [
+          {
+            "id": "foreign_dose"
+          },
+          {
+            "id": "second_dose",
+            "delayFromPreviousEvent": 20,
+            "delayGranularity": "day"
+          }
+        ]
+      },
+      {
+        "name": "local_and_foreign",
+        "conditionsMatching": [
+          {
+            "id": "first_dose"
+          },
+          {
+            "id": "foreign_dose",
+            "delayFromPreviousEvent": 20,
             "delayGranularity": "day"
           }
         ]
@@ -185,6 +251,33 @@
             "id": "exemption_v2"
           }
         ]
+      }
+    ]
+  },
+  "eur": {
+    "name": "Fully vaccinated europeans",
+    "date": "2021-10-03",
+    "versionNumber": 10,
+    "rules": [
+      {
+        "minDays": 14,
+        "minDoses": 2,
+        "mp": "EU/1/20/1528"
+      },
+      {
+        "minDays": 14,
+        "minDoses": 2,
+        "mp": "EU/1/20/1507"
+      },
+      {
+        "minDays": 14,
+        "minDoses": 2,
+        "mp": "EU/1/21/1529"
+      },
+      {
+        "minDays": 14,
+        "minDoses": 1,
+        "mp": "EU/1/20/1525"
       }
     ]
   }
