@@ -1,9 +1,9 @@
 {
   "qcr": {
     "name": "Quebec",
-    "version": "1.4",
-    "versionNumber": 14,
-    "date": "2021-09-17",
+    "version": "1.5",
+    "versionNumber": 15,
+    "date": "2021-11-11",
     "conditions": [
       {
         "id": "second_dose",
@@ -11,7 +11,8 @@
         "cvx": [
           207,
           208,
-          210
+          210,
+          218
         ],
         "description": "Deuxième dose de vaccin bi-dose",
         "daysAgo": 7,
@@ -23,7 +24,8 @@
         "cvx": [
           207,
           208,
-          210
+          210,
+          218
         ],
         "description": "Première dose de vaccin bi-dose",
         "daysAgo": 21,
