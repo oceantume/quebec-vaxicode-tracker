@@ -6,7 +6,7 @@ The most recent files can be found [on the vaxi branch](https://github.com/ocean
 
 ## 📅 Covered period
 
-The tracker starts with the very first public version at the time of release in August 2021. It may be missing some updates done between that time and November 2021, but it will automatically track all new updates done after that point.
+The `vaxi.json` tracking starts with the very first public version at the time of release in August 2021. It may be missing some updates done between that time and November 2021. The `trust-vaxicode.json` tracking started mid-january 2022. Both files are be automatically monitored for changes 4 times per day.
 
 ## 📘 What's vaxi.json?
 
@@ -18,13 +18,13 @@ Parsing the file and explaining its content is beyond the scope of this project.
 
 ## 📗 What's trust-vaxicode.json?
 
-The [trust-vaxicode.json](https://github.com/oceantume/quebec-vaxicode-tracker/blob/vaxi/trust-vaxicode.json) file is also publicly hosted on the Web and used by the VaxiCode application. It contains a list of trusted identities and their associated public keys that are valid to verify signed QR codes. For example, it contains the public keys used to verify that a QR code was emitted by the government of Quebec. It also contains many keys from many entities across the world who are part of the [CommonTrust Network](https://www.commontrustnetwork.org/) registry.
+The [trust-vaxicode.json](https://github.com/oceantume/quebec-vaxicode-tracker/blob/vaxi/trust-vaxicode.json) file is also publicly hosted on the Web and used by the VaxiCode application. It contains a list of trusted identities and their associated public keys that are valid to verify signed QR codes. This includes the entities that are part of the [CommonTrust Network](https://www.commontrustnetwork.org/) registry (the government of Quebec is part of that network).
 
 Code formatting is done on the file when it's retrieved to make it more readable and the timestamp field `d` is automatically stripped out.
 
 ## ⚖ Legal stuff
 
-This repository was not meant with bad intentions. It simply contains a copy of the publicly hosted file so that the change history can easily be navigated. This gives absolutely no useful information for counterfeiting vaccine proofs because it should simply be a coded representation of the latest accepted vaccination status along with public keys which can't be used to sign vaccine proofs.
+This repository was not made with bad intent. It simply contains a copy of the publicly hosted file so that the change history can easily be navigated. This gives absolutely no useful information for counterfeiting vaccine proofs because it should simply be a coded representation of the latest accepted vaccination status along with public keys which can't be used to sign vaccine proofs.
 
 I am in no way associated with the Government of Quebec or the people who make VaxiCode. This is my own personal effort and has nothing to do with the company I work for either.
 
