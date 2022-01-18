@@ -1,4 +1,4 @@
-name: Update Vaxi JSON file
+name: Update VaxiCode JSON Files
 
 on:
   workflow_dispatch:
@@ -7,25 +7,42 @@ on:
 
 jobs:
   update-vaxi:
+    name: Update vaxi.json
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
           ref: vaxi
-      - name: Fetch Vaxi JSON file
-        uses: JamesIves/fetch-api-data-action@v2.1.0
-        with:
-          endpoint: "${{ secrets.VAXI_UPDATES_JSON_URL }}"
-          configuration: '{ "method": "GET" }'
-          save-location: './'
-          save-name: 'vaxi'
-      - name: Format Vaxi JSON file
+      - name: Fetch vaxi.json
+        run: curl ${{ secrets.VAXI_UPDATES_JSON_URL }} > vaxi.json
+      - name: Format vaxi.json
         uses: oceantume/json-format-action@v0.0.3
         with:
           file: 'vaxi.json'
-          removeKeys: 'g, v' # remove these extra keys. they're irrelevant and inconsistent.
-      - name: Commit Vaxi JSON file
+          removeKeys: 'g, v' # remove timestamp and apps-related fields
+      - name: Commit vaxi.json
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'Update vaxi.json with latest version'
+          commit_author: 'GitHub Actions <actions@github.com>'
+  update-trust-vaxicode:
+    name: Update trust-vaxicode.json
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: vaxi
+      - name: Fetch trust-vaxicode.json
+        run: curl ${{ secrets.TRUST_VAXICODE_UPDATES_JSON_URL }} > trust-vaxicode.json
+      - name: Format trust-vaxicode.json
+        uses: oceantume/json-format-action@v0.0.3
+        with:
+          file: 'trust-vaxicode.json'
+          removeKeys: 'd' # remove the timestamp field
+      - name: Commit trust-vaxicode.json
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Update trust-vaxicode.json with latest version'
+          commit_author: 'GitHub Actions <actions@github.com>'
